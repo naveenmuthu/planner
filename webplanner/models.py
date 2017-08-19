@@ -19,7 +19,7 @@ class todo(models.Model):  # Table name, has to wrap models.Model to get the fun
     completed = models.BooleanField(default=False)
     completed_date = models.DateField(blank=True, null=True)
     estimated_date = models.DateField(blank=True, null=True)
-    time_estimated = models.IntegerField(blank=True, null=True)
+    time_estimated = models.IntegerField(blank=True, null=True, default=12)
     time_spent = models.IntegerField(blank=True,null=True)
     priority = models.PositiveIntegerField(choices=PRIORITY_CHOICES, default=1)
 

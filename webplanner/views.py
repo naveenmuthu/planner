@@ -5,10 +5,11 @@ from django.forms import ModelForm
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
+
 class ArticleForm(ModelForm):
     class Meta:
         model = todo
-        fields = ['title','priority','time_estimated', 'completed']
+        fields = ['title','priority','due_date','time_estimated', 'completed']
         widgets = {
             'title': forms.TextInput(attrs={'size': 80}),
             'time_estimated': forms.TextInput(attrs={'size': 3}),
@@ -52,3 +53,13 @@ def edittask(request, taskid):
         form = ArticleForm(instance=instance)
 
     return render(request, 'edittask.html', {'form': form, 'taskid': taskid})
+
+def bigtasks(request):
+
+    items = todo.objects.filter(completed='False',time_estimated__gte=15)
+
+    return render_to_response('index.html', {'items': items})
+
+def quicktasks(request):
+    items = todo.objects.filter(completed='False',time_estimated__lte=15)
+    return render_to_response('index.html', {'items': items})
