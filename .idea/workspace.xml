@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="49b481e9-8079-497f-9228-aae0c4da1f6f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/planner/urls.py" afterPath="$PROJECT_DIR$/planner/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webplanner/models.py" afterPath="$PROJECT_DIR$/webplanner/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webplanner/views.py" afterPath="$PROJECT_DIR$/webplanner/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -548,7 +544,14 @@
       <option name="project" value="LOCAL" />
       <updated>1503173983994</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Working add / edit todos">
+      <created>1503181336238</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1503181336239</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -603,7 +606,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Setting up model and testing display on index page" />
     <MESSAGE value="Adding bootstrap" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding bootstrap" />
+    <MESSAGE value="Working add / edit todos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working add / edit todos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

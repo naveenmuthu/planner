@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Simple Planner</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        /* Color palatte available at http://paletton.com/#uid=33y0u0koMBxaoZCfcULR7n+YkjK */
+        /* Set background color and 100% height */
+        .sidenav {
+          background-color: #AFD9FB;
+          height: 100%;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+          .sidenav {
+            height: auto;
+            padding: 15px;
+          }
+          .row.content {height: auto;}
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h3>Plan It All</h3>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="/index/">Incomplete Tasks</a></li>
+        <li><a href="/addtask/">Add Task</a></li>
+      </ul><br>
+    </div>
+
+    <div class="col-sm-9" style="font-size: large">
+            <p></p>
+            <form action="/edittask/{{ taskid }}/" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-default" value="Save Task" />
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
