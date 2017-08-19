@@ -16,9 +16,12 @@ class todo(models.Model):  # Table name, has to wrap models.Model to get the fun
     created_date = models.DateField(auto_now=True)
     start_date = models.DateField(blank=True, null=True, )
     due_date = models.DateField(blank=True, null=True, )
-    completed = models.BooleanField(default=None)
+    completed = models.BooleanField(default=False)
     completed_date = models.DateField(blank=True, null=True)
-    priority = models.PositiveIntegerField(choices=PRIORITY_CHOICES, default=2)
+    estimated_date = models.DateField(blank=True, null=True)
+    time_estimated = models.IntegerField(blank=True, null=True)
+    time_spent = models.IntegerField(blank=True,null=True)
+    priority = models.PositiveIntegerField(choices=PRIORITY_CHOICES, default=1)
 
     class Meta:
         ordering = ['-priority', '-due_date', 'created_date']

@@ -34,16 +34,16 @@
     <div class="col-sm-3 sidenav">
       <h3>Plan It All</h3>
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="">All Tasks</a></li>
-        <li><a href="">Projects</a></li>
-        <li><a href="">Quick Tasks</a></li>
+        <li class="active"><a href="/">Incomplete Tasks</a></li>
+        <li><a href="/addtask/">Add Task</a></li>
       </ul><br>
     </div>
 
-    <div class="col-sm-9">
+    <div class="col-sm-9" style="font-size: large">
         <hr />
         {% for x in items %}
-            {{ x.title }} - {{ x.created_date|date:"D d M Y" }} - {{ x.priority }}
+            <a href="/edittask/{{ x.pk }}/">
+            {{ x.title }} - {{ x.priority }} - Due on {{ x.due|date:"D d M Y" }} - {{ x.time_estimated }} mins</a>
             <hr />
         {% endfor %}
     </div>

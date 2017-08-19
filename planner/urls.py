@@ -18,6 +18,10 @@ from django.contrib import admin
 from webplanner import views
 
 urlpatterns = [
+    url(r'^$', views.index),
+    url(r'^index/', views.index),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index)
+    url(r'^addtask/', views.addtask),
+    url(r'^edittask/(?P<taskid>[0-9]{0,7})/$', views.edittask),
+    url(r'^', views.index)
 ]
