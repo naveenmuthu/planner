@@ -2,18 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Simple Planner</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        /* Color palatte available at http://paletton.com/#uid=33y0u0koMBxaoZCfcULR7n+YkjK */
+        /* Set background color and 100% height */
+        .sidenav {
+          background-color: #AFD9FB;
+          height: 100%;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+          .sidenav {
+            height: auto;
+            padding: 15px;
+          }
+          .row.content {height: auto;}
+        }
+    </style>
+
 </head>
 <body>
 
-<h2>To Do</h2>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h3>Plan It All</h3>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="">All Tasks</a></li>
+        <li><a href="">Projects</a></li>
+        <li><a href="">Quick Tasks</a></li>
+      </ul><br>
+    </div>
 
-{% for x in items %}
-<p>{{ x.name }} - {{ x.created|date:"D d M Y" }}</p>
-
-<p>{{ x.description }}</p>
-<hr />
-{% endfor %}
+    <div class="col-sm-9">
+        <hr />
+        {% for x in items %}
+            {{ x.title }} - {{ x.created_date|date:"D d M Y" }} - {{ x.priority }}
+            <hr />
+        {% endfor %}
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
