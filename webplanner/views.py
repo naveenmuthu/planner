@@ -32,7 +32,7 @@ def addtask(request):
         # check whether it's valid:
         if form.is_valid():
             new_todo = form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/addtask/')
 
     else:
         form = ArticleForm()
