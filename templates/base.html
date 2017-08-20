@@ -58,16 +58,35 @@
         }
     </style>
 
+    <script>
+        var today = new Date();
+        var todayOfWeek = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+        tdd = today.getDate();
+        tmm = today.getMonth() + 1;
+        twd = todayOfWeek[today.getDay()];
+
+        $(function(){
+            $('#today').text(twd + ' ' + tmm + '/' + tdd);
+        });
+
+    </script>
+
     {% block head %}
     {% endblock %}
 
 </head>
 <body>
-<nav class="navbar ">
-    <div style="margin: 15px">
-        <h3> Plan it All </h3>
-    </div>
-</nav>
+
+<div class = "row">
+    <nav class="navbar" style="padding: 10px">
+            <div class="col-sm-10">
+                <h3> Plan it All </h3>
+            </div>
+            <div class="col-sm-2">
+                <td style="text-align:right"><h3><span id="today" class="pull-right"></span></h3></td>
+            </div>
+    </nav>
+</div>
 
 <div class="container-fluid">
   <div class="row content">
