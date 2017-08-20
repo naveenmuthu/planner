@@ -25,6 +25,18 @@ def index(request):
 
     return render_to_response('index.html', {'items': items, 'view': 'all'})
 
+def bigtasks(request):
+
+    items = todo.objects.filter(completed='False')
+
+    return render_to_response('index.html', {'items': items, 'view': 'big'})
+
+def quicktasks(request):
+
+    items = todo.objects.filter(completed='False')
+
+    return render_to_response('index.html', {'items': items, 'view': 'quick'})
+
 def addtask(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -54,14 +66,3 @@ def edittask(request, taskid):
 
     return render(request, 'edittask.html', {'form': form, 'taskid': taskid})
 
-def bigtasks(request):
-
-    items = todo.objects.filter(completed='False')
-
-    return render_to_response('index.html', {'items': items, 'view': 'big'})
-
-def quicktasks(request):
-
-    items = todo.objects.filter(completed='False')
-
-    return render_to_response('index.html', {'items': items, 'view': 'quick'})
