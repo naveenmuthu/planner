@@ -18,6 +18,15 @@
 
         $(document).ready(function(){
 
+            // Toggle the active sidebar
+            if ('{{ view }}' == 'all') {
+                $("#indexlink").addClass("active");
+            } else if ('{{ view }}' == 'big') {
+                $("#biglink").addClass("active");
+            } else if ('{{ view }}' == 'quick') {
+                $("#quicklink").addClass("active");
+            }
+
             // Loop through the tasks
             {% for x in items %}
 
@@ -64,8 +73,7 @@
 {% endblock %}
 
 {% block content %}
-
-    <hr />
+    <p></p>
 
     <span id="todos"> </span>
 

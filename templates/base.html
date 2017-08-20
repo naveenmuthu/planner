@@ -8,29 +8,53 @@
     <title>A Simple Planner</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css?family=Palanquin" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <style>
+        body {
+            font-family: 'Palanquin', sans-serif;
+            line-height: 2;
+        }
+
         /* Color palatte available at http://paletton.com/#uid=33y0u0koMBxaoZCfcULR7n+YkjK */
-        /* Set background color and 100% height */
+
         .sidenav {
-          background-color: #AFD9FB;
-          height: 100%;
+            background-color: #AFD9FB;
+            height: 100%;
+            padding: 5px;
+        }
+
+        .nav-stacked>li+li {
+            margin-top: 5px;
+        }
+
+        input {
+            border-radius: 4px;
+            border: 1px solid #CCCCCC;
         }
 
         mark, ::selection {
-            background: #FFC5AC;
+            background: #FFEBAC;
         }
 
-        /* On small screens, set height to 'auto' for sidenav and grid */
+        .navbar {
+            background-color: #337BB7;
+            border: 0px;
+            margin: 0px;
+            color: #FFFFFF;
+            border-radius: 0px;
+        }
+
+        /* On small screens, set height to 'auto' for navs and grid */
         @media screen and (max-width: 767px) {
           .sidenav {
             height: auto;
-            padding: 15px;
+            padding: 5px;
           }
-          .row.content {height: auto;}
+          .row.content, .navbar {height: auto;}
         }
     </style>
 
@@ -39,16 +63,20 @@
 
 </head>
 <body>
+<nav class="navbar ">
+    <div style="margin: 15px">
+        <h3> Plan it All </h3>
+    </div>
+</nav>
 
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav">
-      <h3>Plan It All</h3>
         <ul class="nav nav-pills nav-stacked" style="font-size: large">
-            <li><a href="/index/">Incomplete Tasks</a></li>
-            <li><a href="/bigtasks/">Big Tasks</a></li>
-            <li><a href="/quicktasks/">Quick Tasks</a></li>
-            <li><a href="/addtask/">Add Task</a></li>
+            <li id="indexlink"><a href="/index/">Incomplete Tasks</a></li>
+            <li id="biglink"><a href="/bigtasks/">Big Tasks</a></li>
+            <li id="quicklink"><a href="/quicktasks/">Quick Tasks</a></li>
+            <li id="addlink"><a href="/addtask/">Add Tasks</a></li>
         </ul><br>
     </div>
 
