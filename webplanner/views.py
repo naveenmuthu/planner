@@ -23,7 +23,7 @@ def index(request):
 
     items = todo.objects.filter(completed='False')
 
-    return render_to_response('index.html', {'items': items})
+    return render_to_response('index.html', {'items': items, 'view': 'all'})
 
 def addtask(request):
     if request.method == 'POST':
@@ -56,10 +56,12 @@ def edittask(request, taskid):
 
 def bigtasks(request):
 
-    items = todo.objects.filter(completed='False',time_estimated__gte=15)
+    items = todo.objects.filter(completed='False')
 
-    return render_to_response('index.html', {'items': items})
+    return render_to_response('index.html', {'items': items, 'view': 'big'})
 
 def quicktasks(request):
-    items = todo.objects.filter(completed='False',time_estimated__lte=15)
-    return render_to_response('index.html', {'items': items})
+
+    items = todo.objects.filter(completed='False')
+
+    return render_to_response('index.html', {'items': items, 'view': 'quick'})

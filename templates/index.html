@@ -3,16 +3,69 @@
 {% block head %}
     <script >
         var priority_name = ["Low", "Normal", "High", "Top"];
-        $(document).ready(function(){
+        var text = '';
+        var estimatedDate = new Date();
+        var dateVar = '';
+        var dsplit = '';
+        var dd = estimatedDate.getDate();
+        var mm = estimatedDate.getMonth() + 1;
+        var compareDate = new (Date)
+        var numberOfDaysToAdd = 0;
 
-            // Decodes all the priorities back into text
-            // TODO: There has to be a cleaner solution for this.
-            $(".priority").each(function(){
-                var value = $(this).text();
-                if ( value == '1'|'2'|'3'|'4') {
-                    $(this).html(priority_name[value-1]);
+        $(document).ready(function(){
+            {% for x in items %}
+
+                //This is for the time estimation
+                numberOfDaysToAdd = {{ x.time_estimated }} / 180;
+                estimatedDate.setDate(estimatedDate.getDate() + numberOfDaysToAdd);
+                dd = estimatedDate.getDate();
+                mm = estimatedDate.getMonth() + 1;
+                dateVar = '{{ x.due_date|date:"Y m d"}}';
+                dsplit = dateVar.split(" ");
+                compareDate = new Date(dsplit[0],dsplit[1]-1,dsplit[2]) ;
+
+                // Show all tasks
+                if('{{ view }}' == 'all') {
+
+                    text = '';
+                    if (estimatedDate > compareDate) { text+= '<mark>'; }
+                    text += '<a href="/edittask/{{ x.pk }}/">';
+                    text += '{{ x.title }} - ' + priority_name[{{ x.priority }}-1] + ' Priority - ';
+                    text += 'Due on {{ x.due_date|date:"M d" }} - {{ x.time_estimated }} mins</a>';
+                    text += ' - Estimated ' + mm + '/' + dd + '<hr />';
+                    if (estimatedDate > compareDate) { text+= '</mark>'; }
+                    $('#todos').append(text);
+
+                } else if ('{{ view }}' == 'big' & {{ x.time_estimated}} >= 15) {
+                    //Show big tasks
+                    // TODO: Move the text rendering to a function so the code's not repeating
+
+                    text = '';
+                    if (estimatedDate > compareDate) { text+= '<mark>'; }
+                    text += '<a href="/edittask/{{ x.pk }}/">';
+                    text += '{{ x.title }} - ' + priority_name[{{ x.priority }}-1] + ' Priority - ';
+                    text += 'Due on {{ x.due_date|date:"M d" }} - {{ x.time_estimated }} mins</a>';
+                    text += ' - Estimated ' + mm + '/' + dd + '<hr />';
+                    if (estimatedDate > compareDate) { text+= '</mark>'; }
+                    $('#todos').append(text);
+
+                } else if ('{{ view }}' == 'quick' & {{ x.time_estimated}} <= 15) {
+                    //Show big tasks
+                    // TODO: Move the text rendering to a function so the code's not repeating
+
+                    text = '';
+                    if (estimatedDate > compareDate) { text+= '<mark>'; }
+                    text += '<a href="/edittask/{{ x.pk }}/">';
+                    text += '{{ x.title }} - ' + priority_name[{{ x.priority }}-1] + ' Priority - ';
+                    text += 'Due on {{ x.due_date|date:"M d" }} - {{ x.time_estimated }} mins</a>';
+                    text += ' - Estimated ' + mm + '/' + dd + '<hr />';
+                    if (estimatedDate > compareDate) { text+= '</mark>'; }
+                    $('#todos').append(text);
+
                 }
-            });
+
+            {% endfor %}
+
         });
 
     </script>
@@ -22,15 +75,6 @@
 
     <hr />
 
-
-    {% for x in items %}
-
-        <a href="/edittask/{{ x.pk }}/">
-            {{ x.title }} - <span class="priority">{{ x.priority }}</span>-
-            Due on {{ x.due_date|date:"M d" }} - {{ x.time_estimated }} mins</a>
-        <hr />
-
-    {% endfor %}
-
+    <span id="todos"> </span>
 
 {% endblock %}
