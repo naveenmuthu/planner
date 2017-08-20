@@ -24,7 +24,7 @@ class todo(models.Model):  # Table name, has to wrap models.Model to get the fun
     priority = models.PositiveIntegerField(choices=PRIORITY_CHOICES, default=1)
 
     class Meta:
-        ordering = ['-priority', '-due_date', 'created_date']
+        ordering = ['-priority', 'due_date', 'created_date']
 
     def __unicode__(self):
         # Tell it to return as a unicode string (The name of the to-do item) rather than just Object.

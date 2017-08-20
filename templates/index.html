@@ -1,9 +1,36 @@
 {% extends 'base.html' %}
-    {% block content %}
+
+{% block head %}
+    <script >
+        var priority_name = ["Low", "Normal", "High", "Top"];
+        $(document).ready(function(){
+
+            // Decodes all the priorities back into text
+            // TODO: There has to be a cleaner solution for this.
+            $(".priority").each(function(){
+                var value = $(this).text();
+                if ( value == '1'|'2'|'3'|'4') {
+                    $(this).html(priority_name[value-1]);
+                }
+            });
+        });
+
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    <hr />
+
+
+    {% for x in items %}
+
+        <a href="/edittask/{{ x.pk }}/">
+            {{ x.title }} - <span class="priority">{{ x.priority }}</span>-
+            Due on {{ x.due_date|date:"M d" }} - {{ x.time_estimated }} mins</a>
         <hr />
-        {% for x in items %}
-            <a href="/edittask/{{ x.pk }}/">
-            {{ x.title }} - {{ x.priority }} - Due on {{ x.due_date|date:"M d" }} - {{ x.time_estimated }} mins</a>
-            <hr />
-        {% endfor %}
-    {% endblock %}
+
+    {% endfor %}
+
+
+{% endblock %}
